@@ -18,7 +18,7 @@ void imprimeMatriz(Matrix x)
     }
 }
 
-double Norma(Matrix x)
+double normaM(Matrix x)
 {
     double x1 = x.getValue(0,0);
     double x2 = x.getValue(0,1);
@@ -46,4 +46,32 @@ Matrix invertidaMatriz(Matrix x)
     return y;
 }
 
+Matrix transMatriz(Matrix x)
+{
+    Matrix y(x.Columns(), x.Rows());
+    
+    for(int i = 0; i < y.Rows(); i++)
+    {
+        for(int j = 0; j < y.Columns(); j++)
+        {
+            y.setValue(i, j, x.getValue(j,i));
+        }                           
+    }
+    return y;
+}
+
+Matrix multEM(double x, Matrix y)
+{
+    Matrix z(y.Rows(), y.Columns());
+
+    for (int i = 0; i < z.Rows(); i++)
+    {
+        for (int j = 0; j < z.Columns(); j++)
+        {
+            z.setValue(i, j, x*y.getValue(i,j));
+        }
+    }
+    
+    return z;
+}
 
