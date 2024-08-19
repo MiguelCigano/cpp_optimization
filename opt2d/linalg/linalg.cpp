@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <cmath>
 
 #include "matrix.h"
 #include "linalg.h"
@@ -26,7 +27,7 @@ double normaM(Matrix x)
     return sqrt(pow(x1, 2) + pow(x2, 2));
 }
 
-Matrix invertidaMatriz(Matrix x)
+Matrix inversaMatriz(Matrix x)
 {
     double a = x.getValue(0,0);
     double b = x.getValue(0,1);
@@ -38,9 +39,9 @@ Matrix invertidaMatriz(Matrix x)
 
     for(int i = 0; i < y.Rows(); i++)
     {
-        for(int j = 0; i < y.Columns; j++)
+        for(int j = 0; i < y.Columns(); j++)
         {
-            y.setValue(i,j, determinante*y.getValu(i,j));
+            y.setValue(i,j, determinante*y.getValue(i,j));
         }
     }
     return y;
