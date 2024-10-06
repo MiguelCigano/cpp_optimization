@@ -13,7 +13,7 @@ void mostrarEstado(double cont, Matrix x, double Ux, Matrix dUx, ios::fmtflags s
 {
     double x1 = x.getValue(0,0);
     double x2 = x.getValue(0,1);
-    double norma = normaM(dUx);
+    double norma = normaMatriz(dUx);
 
     cout.flags(settings);
     cout << setw(3) << cont << '\t';
@@ -25,19 +25,13 @@ void guardarRegistro(Matrix registro)
 {
     ofstream myfile;
     myfile.open("data.csv");
-
     myfile << "cont,x1,x2,cost," << endl; 
 
-    for (int i = 0; i < registro.Rows(); i++)
-    {
-        for (int j = 0; j < registro.Columns(); j++)
-        {
+    for (int i = 0; i < registro.Rows(); i++){
+        for (int j = 0; j < registro.Columns(); j++){
             myfile << registro.getValue(i,j) << ",";
         }
-
         myfile << endl;
     }
-
-    myfile.close();
-        
+    myfile.close();   
 }
